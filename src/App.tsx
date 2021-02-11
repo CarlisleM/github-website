@@ -20,8 +20,8 @@ function App() {
 	return (
 		<div className='App'>
 			<Router>
+				<NavBar />
 				<div>
-					<NavBar />
 					<Switch>
 						<Route exact path='/'>
 							<Home />
@@ -49,8 +49,8 @@ function App() {
 							<ScoreBoar />
 						</Route>
 					</Switch>
-					<Footer />
 				</div>
+				<Footer />
 			</Router>
 		</div>
 	)

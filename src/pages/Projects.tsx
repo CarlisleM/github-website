@@ -9,6 +9,56 @@ import omegle from '../images/omegle.png'
 import obs from '../images/obs.png'
 import filler from '../images/x.png'
 
+import { IdResponsiveRenderOnlyIn, Responsive } from 'responsive-react'
+
+const ProjectsItems = [
+	{
+		title: 'League Site Scraper',
+		logo: leaguelogo,
+		link: '/league-scraper',
+	},
+	{
+		title: 'Melee Iron Man',
+		logo: melee,
+		link: '/melee-iron-man',
+	},
+	{
+		title: 'Omegle Bot',
+		logo: omegle,
+		link: '/omegle-bot',
+	},
+	{
+		title: 'Score Boar',
+		logo: boar,
+		link: '/score-boar',
+	},
+	{
+		title: 'OBS Auto Record',
+		logo: obs,
+		link: '/obs-auto-record',
+	},
+	{
+		title: 'Filler',
+		logo: filler,
+		link: '/filler',
+	},
+	{
+		title: 'Filler',
+		logo: filler,
+		link: '/filler',
+	},
+	{
+		title: 'Filler',
+		logo: filler,
+		link: '/filler',
+	},
+	{
+		title: 'Filler',
+		logo: filler,
+		link: '/filler',
+	},
+]
+
 const ProjectsContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
@@ -17,78 +67,49 @@ const ProjectsContainer = styled.div`
 
 const Project = styled.div`
 	flex: 0 30%;
-	margin: 20px 0 0;
 	height: 300px;
 	border: 2px solid black;
 	border-radius: 10px;
+
+	:not(:nth-last-child(-n + 3)) {
+		margin: 0 0 20px;
+	}
+
+	// Phone
+	@media only screen and (max-width: 768px) {
+		flex: 0 90%;
+		border: none;
+		:not(:last-child) {
+			margin: 0 0 20px;
+		}
+	}
+`
+
+const Divider = styled.hr`
+	width: 100%;
+	border-top: 2px solid lightgrey; //  Maybe a better colour choice here
 `
 
 function Projects() {
+	const projectObject = ProjectsItems.map((project) => (
+		<Project>
+			<h1>{project.title}</h1>
+			<img src={project.logo} alt='Logo' height='100px' width='100px' />
+			<div>
+				<Link to={project.link}>{project.title}</Link>
+			</div>
+		</Project>
+	))
+
 	return (
 		<ProjectsContainer>
-			<Project>
-				<h1>League Site Scraper</h1>
-				<img src={leaguelogo} alt='Logo' height='100px' width='100px' />
-				<div>
-					<Link to='/league-scraper'>League Site Scraper</Link>
-				</div>
-			</Project>
-			<Project>
-				<h1>Melee Iron Man</h1>
-				<img src={melee} alt='Logo' height='100px' width='100px' />
-				<div>
-					<Link to='/melee-iron-man'>Melee Iron Man</Link>
-				</div>
-			</Project>
-			<Project>
-				<h1>Omegle Bot</h1>
-				<img src={omegle} alt='Logo' height='100px' width='100px' />
-				<div>
-					<Link to='/omegle-bot'>Omegle Bot</Link>
-				</div>
-			</Project>
-			<Project>
-				<h1>Score Boar</h1>
-				<img src={boar} alt='Logo' height='100px' width='100px' />
-				<div>
-					<Link to='/score-boar'>Score Boar Link</Link>
-				</div>
-			</Project>
-			<Project>
-				<h1>OBS Auto Record</h1>
-				<img src={obs} alt='Logo' height='100px' width='100px' />
-				<div>
-					<Link to='/obs-auto-record'>OBS Auto Record</Link>
-				</div>
-			</Project>
-			<Project>
-				<h1>Filler</h1>
-				<img src={filler} alt='Logo' height='100px' width='100px' />
-				<div>
-					<Link to='/filler'>Filler Link</Link>
-				</div>
-			</Project>
-			<Project>
-				<h1>Filler</h1>
-				<img src={filler} alt='Logo' height='100px' width='100px' />
-				<div>
-					<Link to='/filler'>Filler Link</Link>
-				</div>
-			</Project>
-			<Project>
-				<h1>Filler</h1>
-				<img src={filler} alt='Logo' height='100px' width='100px' />
-				<div>
-					<Link to='/filler'>Filler Link</Link>
-				</div>
-			</Project>
-			<Project>
-				<h1>Filler</h1>
-				<img src={filler} alt='Logo' height='100px' width='100px' />
-				<div>
-					<Link to='/filler'>Filler Link</Link>
-				</div>
-			</Project>
+			{projectObject}
+			<Responsive // Fix this divider
+				displayIn={[
+					IdResponsiveRenderOnlyIn.Mobile,
+					IdResponsiveRenderOnlyIn.Tablet,
+				]}
+			></Responsive>
 		</ProjectsContainer>
 	)
 }
