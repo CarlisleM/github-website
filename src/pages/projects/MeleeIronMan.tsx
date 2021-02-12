@@ -1,14 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Project } from '../../StyledComponents'
 import melee from '../../images/melee.png'
-
-const Project = styled.div`
-	flex: 0 30%;
-	margin: 20px 45px;
-	height: 785px;
-	border: 2px solid black;
-	border-radius: 10px;
-`
 
 function MeleeIronMan() {
 	return (
